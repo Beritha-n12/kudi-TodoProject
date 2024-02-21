@@ -1,4 +1,3 @@
-// JavaScript functions for adding, deleting, checking todos, and filtering
 let todos = [];
 
 function addTodo() {
@@ -13,22 +12,26 @@ function addTodo() {
 
         todos.push(todo);
         newTodoInput.value = '';
+        saveToLocalStorage();
         displayTodos();
     }
 }
 
 function deleteTodo(index) {
     todos.splice(index, 1);
+    saveToLocalStorage();
     displayTodos();
 }
 
 function toggleCompleted(index) {
     todos[index].completed = !todos[index].completed;
+    saveToLocalStorage();
     displayTodos();
 }
 
 function clearCompleted() {
     todos = todos.filter(todo => !todo.completed);
+    saveToLocalStorage();
     displayTodos();
 }
 
@@ -76,4 +79,14 @@ function displayTodos(todosToDisplay = todos) {
     });
 }
 
+function saveToLocalStorage() {
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function loadFromLocalStorage() {
+    const storedTodos = localStorage.getItem('todos');
+    todos = storedTodos ? JSON.parse(storedTodos) : [];
+}
+
+loadFromLocalStorage();
 displayTodos();
