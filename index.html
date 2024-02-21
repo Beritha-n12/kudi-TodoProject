@@ -12,20 +12,20 @@
     <div id="header">TODO</div>
 
     <div id="todo-input">
-        <input type="text" id="newTodo" placeholder="Add new todo">
-        <button onclick="addTodo()">Create Todo</button>
+        <input type="text" id="newTodo" placeholder="Start typing...">
+        <button onclick="addTodo()"> Create </button>
     </div>
 
     <ul id="todo-list"></ul>
 
     <div id="bottom-bar">
-        <div id="uncompleted-tasks">Uncompleted tasks: <span id="uncompleted-count">0</span></div>
+        <div id="uncompleted-tasks">left tasks: <span id="uncompleted-count">0</span></div>
         <div id="filter-buttons">
             <button onclick="filterTodos('all')">All</button>
             <button onclick="filterTodos('pending')">Pending</button>
             <button onclick="filterTodos('completed')">Completed</button>
         </div>
-        <button onclick="clearCompleted()">Clear Completed</button>
+        <button onclick="clearCompleted('clearCompleted')">Clear Completed</button>
     </div>
 </div>
 
