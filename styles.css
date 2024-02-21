@@ -1,66 +1,179 @@
 body {
     display: flex;
+    position: relative;
+    background: linear-gradient(to right, purple, blue);
+    background-size: cover;
+    background-position: center;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-    background: linear-gradient(to right, purple, blue);
-    color: white;
-    font-family: Arial, sans-serif;
+    color:black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+
+    
 }
 
 #todo-container {
-    max-width: 400px;
+    max-width: 600px;
     width: 100%;
-    background: white;
     padding: 20px;
     border-radius: 8px;
+    display: grid;
+    gap: 20px;
+    grid-template-areas:
+        "header"
+        "input"
+        "todos"
+        "bottom-bar";
+    line-height: 1px;
 }
 
 #header {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
+    text-align: justify;
+    font-size: 25px;
+    border-radius: 12px;
+    height: 20px;
+    width: 100px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding:5px;
+    color: white;
+
+}
+
+#todo-header {
+    grid-area: header;
+    
 }
 
 #todo-input {
-    display: flex;
+    display: grid;
     gap: 10px;
+    font-size: 15px;
+    grid-template-columns: 1fr auto;
+    align-items: center;
     margin-bottom: 20px;
+    grid-area: input;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+
+}
+#todo-input button {
+    background: purple;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    font-size: 15px;
+    cursor: pointer;
+
+}
+
+#newTodo {
+    padding: 15px;
+    font-size: 15px;
+    border: 1px solid white;
+    border-radius: 12px;
+    flex-grow: 1;
+}
+
+#newTodo:focus {
+    outline: none;
+    border-color: grey;
+}
+
+#newTodo::placeholder {
+    color: #999;
 }
 
 #todo-list {
     list-style-type: none;
-    padding: 0;
-    color: beige;
+    padding: 15px;
+    grid-area: todos;
+    background-color: white;
+    border-radius: 12px;
+    font-size: 15px;
 }
 
 .todo-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-content: space-between;
     padding: 10px;
     border-bottom: 1px solid #ccc;
+    transition: background 0.3s;
+}
+
+.todo-item:hover {
+    background: hsl(0, 2%, 53%);
+    border-radius: 12px;
 }
 
 .todo-item button {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
+    transition: color 0.3s;
+    color: white;
+    visibility: visible;
+}
+
+.todo-item:hover button{
+    color: black;
+}
+
+.todo-item:hover .delete-button {
+    visibility: hidden;
 }
 
 #bottom-bar {
-    display: flex;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: auto auto auto;
     align-items: center;
     justify-content: space-between;
-    margin-top: 20px;
+    grid-area: bottom-bar;
+    font-size: 15px;
+    background-color: white;
+    margin-bottom: 25px;
+    padding: 20px;
+    border-radius: 12px;
+}
+#bottom-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    transition: color 0.3s;
+    border-radius: 12px;
+    
 }
 
-#filter-buttons button {
-    margin-right: 10px;
+#uncompleted-tasks {
+    font-size: 16px;
+    color: black;
+}
+
+#filter-buttons button,
+#clearCompleted {
     background: none;
     border: none;
     cursor: pointer;
     font-size: 16px;
+    transition: color 0.3s;
+    border-radius: 12px;
+}
+
+#filter-buttons button:hover,
+#clear-completed:hover {
+    color: purple /* Magenta */
+}
+
+@media (max-width: 600px) {
+    #todo-container {
+        max-width: 100%;
+    }
 }
